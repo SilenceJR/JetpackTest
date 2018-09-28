@@ -1,19 +1,20 @@
 package com.silence.jetpacktest
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.silence.jetpacktest.ui.main.MainFragment
+import android.view.View
+import androidx.navigation.Navigation
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, MainFragment.newInstance())
-                    .commitNow()
-        }
     }
 
+    override fun onSupportNavigateUp() = Navigation.findNavController(this, R.id.fragment_Navigation).navigateUp()
+
+    override fun onClick(v: View?) {
+        if (null == v) return
+    }
 }
